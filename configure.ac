@@ -113,6 +113,7 @@ case "${host_os}" in
     ;;
   linux*)
     SYS=linux
+    test "${host_cpu}" = "riscv64" && CFLAGS="${CFLAGS} -pthread"
     ;;
   bsdi*)
     SYS=bsdi
