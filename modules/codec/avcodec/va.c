@@ -87,6 +87,21 @@ vlc_fourcc_t vlc_va_GetChroma(enum PixelFormat hwfmt, enum PixelFormat swfmt)
             }
             break;
 #endif
+        case AV_PIX_FMT_DRM_PRIME:
+            switch(swfmt)
+            {
+                case AV_PIX_FMT_NV12:
+                    return VLC_CODEC_DRMP_NV12;
+                case AV_PIX_FMT_NV21:
+                    return VLC_CODEC_DRMP_NV21;
+                case AV_PIX_FMT_YUV420P:
+                    return VLC_CODEC_DRMP_YUV420P;
+                case AV_PIX_FMT_P010LE:
+                    return VLC_CODEC_DRMP_P010;
+                default:
+                    return 0;
+            }
+            break;
         default:
             return 0;
     }

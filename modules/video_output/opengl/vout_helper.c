@@ -1806,7 +1806,7 @@ int vout_display_opengl_Display(vout_display_opengl_t *vgl,
         vgl->vt.DrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
     vgl->vt.Disable(GL_BLEND);
-
+    vgl->vt.Finish();
     /* Display */
     vlc_gl_Swap(vgl->gl);
 

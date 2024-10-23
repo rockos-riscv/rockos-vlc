@@ -686,6 +686,7 @@ static int ffmpeg_OpenVa(decoder_t *p_dec, AVCodecContext *p_context,
 
 static const enum PixelFormat hwfmts[] =
 {
+    AV_PIX_FMT_DRM_PRIME,
 #ifdef _WIN32
 #if LIBAVUTIL_VERSION_CHECK(54, 13, 1, 24, 100)
     AV_PIX_FMT_D3D11VA_VLD,
@@ -762,7 +763,7 @@ int InitVideoHwDec( vlc_object_t *obj )
 {
     decoder_t *p_dec = container_of(obj, decoder_t, obj);
 
-    if (p_dec->fmt_in.i_codec != VLC_CODEC_AV1)
+    if ((p_dec->fmt_in.i_codec != VLC_CODEC_AV1) && (p_dec->fmt_in.i_codec != VLC_CODEC_H264) && (p_dec->fmt_in.i_codec != VLC_CODEC_HEVC))
         return VLC_EGENERIC;
 
     decoder_sys_t *p_sys = calloc(1, sizeof(*p_sys));
@@ -777,7 +778,7 @@ int InitVideoHwDec( vlc_object_t *obj )
         return VLC_ENOMEM;
     }
 
-    if (ExtractAV1Profile(p_context, &p_dec->fmt_in, p_sys) != VLC_SUCCESS)
+    if ((p_dec->fmt_in.i_codec == VLC_CODEC_AV1) && (ExtractAV1Profile(p_context, &p_dec->fmt_in, p_sys) != VLC_SUCCESS))
         goto failed;
 
     p_dec->p_sys = p_sys;

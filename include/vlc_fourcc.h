@@ -383,6 +383,13 @@
 #define VLC_CODEC_D3D11_OPAQUE          VLC_FOURCC('D','X','1','1') /* 4:2:0  8 bpc */
 #define VLC_CODEC_D3D11_OPAQUE_10B      VLC_FOURCC('D','X','1','0') /* 4:2:0 10 bpc */
 
+/* DRM_PRIME opaque video surface for ffmpeg */
+#define VLC_CODEC_DRMP_NV12          VLC_FOURCC('D','R','M','1') // NV12
+#define VLC_CODEC_DRMP_NV21          VLC_FOURCC('D','R','M','2') // NV21
+#define VLC_CODEC_DRMP_YUV420P       VLC_FOURCC('D','R','M','3') // YUV420P
+#define VLC_CODEC_DRMP_P010          VLC_FOURCC('D','R','M','4') // P010le
+
+
 /* CVPixelBuffer opaque buffer type */
 #define VLC_CODEC_CVPX_NV12       VLC_FOURCC('C','V','P','N')
 #define VLC_CODEC_CVPX_UYVY       VLC_FOURCC('C','V','P','Y')

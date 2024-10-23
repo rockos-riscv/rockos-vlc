@@ -424,6 +424,13 @@ endif
 codec_LTLIBRARIES += libvaapi_plugin.la
 endif
 
+libesdrm_plugin_la_SOURCES = \
+	codec/avcodec/es_drm.c hw/esdrm/vlc_esdrm.c hw/es_drm/vlc_esdrm.h
+libesdrm_plugin_la_CPPFLAGS = $(AM_CPPFLAGS)
+libesdrm_plugin_la_CFLAGS = $(AM_CFLAGS) $(AVCODEC_CFLAGS)
+libesdrm_plugin_la_LIBADD = $(LIBVA_LIBS) $(AVCODEC_LIBS)
+codec_LTLIBRARIES += libesdrm_plugin.la
+
 libd3d9_common_la_SOURCES = video_chroma/d3d9_fmt.c video_chroma/d3d9_fmt.h \
 	video_chroma/dxgi_fmt.c video_chroma/dxgi_fmt.h
 libd3d9_common_la_LDFLAGS = -static

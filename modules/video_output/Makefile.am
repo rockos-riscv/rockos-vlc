@@ -101,6 +101,13 @@ libglconv_vdpau_plugin_la_SOURCES = video_output/opengl/converter_vdpau.c \
 libglconv_vdpau_plugin_la_CFLAGS = $(AM_CFLAGS) $(VDPAU_CFLAGS)
 libglconv_vdpau_plugin_la_LIBADD = $(LIBDL) libvlc_vdpau.la $(X_LIBS) $(X_PRE_LIBS) -lX11
 
+libglconv_drm_prime_plugin_la_SOURCES = video_output/opengl/converter_drm_prime.c \
+	video_output/opengl/converter.h hw/esdrm/vlc_esdrm.c hw/esdrm/vlc_esdrm.h
+libglconv_drm_prime_plugin_la_CFLAGS = $(AM_CFLAGS) $(GL_CFLAGS) $(AVCODEC_CFLAGS)
+libglconv_drm_prime_plugin_la_LIBADD = $(LIBVA_LIBS) $(AVCODEC_LIBS) 
+
+vout_LTLIBRARIES += libglconv_drm_prime_plugin.la
+
 if HAVE_GL
 vout_LTLIBRARIES += libgl_plugin.la
 if HAVE_EGL
